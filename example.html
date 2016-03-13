@@ -1,0 +1,115 @@
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,500italic,400italic,300italic,100italic,700italic,900,900italic|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="shoe.min.css">
+    <link rel="stylesheet" href="bower_components/typicons.font/src/font/typicons.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<div class="navbar">
+    <div class="col-xs-4 clear">
+        <ul class="nav collapse">
+            <li>
+                Home
+            </li>
+            <li>
+                Contact
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-4 clear center">
+        <div class="brand">
+            ShoeStrap
+        </div>
+    </div>
+    <div class="col-xs-4 clear">
+        <div class="align-right">
+            <ul class="nav collapse">
+                <div class="input-box">
+                    <span class="typcn typcn-zoom"></span>
+                    <input placeholder="Search">
+                    </input>
+                </div>
+                <li class="CTA">
+                    Sign up
+                </li>
+            </ul>
+            <span class="menu-toggle typcn typcn-th-menu"></span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 clear">
+            <h1>
+                This is a h1 header
+            </h1>
+            <h2>
+                This is a smaller h2 header
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 clear">
+            <button class="btn btn-lg">
+                Button LG
+            </button>
+            <button class="btn btn-md">
+                Button MD
+            </button>
+            <button class="btn btn-sm">
+                Button SM
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 clear">
+            <div class="label">
+                Border Size
+            </div>
+            <input type="range" min="0" max="20" id="slider" />
+        </div>
+    </div>
+    <div id="border" class="row">
+        <div class="col-md-12">COL 12</div>
+        <div class="col-md-6">COL 6</div>
+        <div class="col-md-6">COL 6</div>
+        <div class="col-md-5">COL 5</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-5">COL 5</div>
+        <div class="col-md-4">COL 4</div>
+        <div class="col-md-4">COL 4</div>
+        <div class="col-md-4">COL 4</div>
+        <div class="col-md-3">COL 3</div>
+        <div class="col-md-3">COL 3</div>
+        <div class="col-md-3">COL 3</div>
+        <div class="col-md-3">COL 3</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-2">COL 2</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+        <div class="col-md-1">COL 1</div>
+
+    </div>
+</div>
+
+<script>
+$('#slider').on('change',function(){
+    var val = $(this).val();
+    console.log(val);
+    $('#border').children().css(
+        "border", val + "px white solid"
+    )
+});
+</script>

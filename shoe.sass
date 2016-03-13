@@ -1,0 +1,201 @@
+$padding-size: 15px;
+
+$green-dark: #D1F2A5;
+$green-light: #EFFAB4;
+$green-text: #7D9C54;
+$orange-light: #FFC48C;
+$orange-dark: #FF9F80;
+$pink: #F56991;
+$grey: #EEE;
+$light-grey: #F5F5F5;
+
+$xs-screen: 320px;
+$sm-screen: 480px;
+$md-screen: 768px;
+$container: 960px;
+$lg-screen: 1200px;
+
+$s-min: 60;
+$s-max: 70;
+$l-min: 80;
+$l-max: 90;
+
+*
+    font-family: "Roboto", Helvetica, sans-serif
+    transition: all 0.25s ease
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    color: #4A4A4A
+
+body
+    margin: 0
+
+.container
+    width: $container
+    margin: auto auto
+    display: block
+
+.row, .navbar
+    box-sizing: border-box
+    display: flex
+    flex: 0 1 auto
+    flex-direction: row
+    flex-wrap: wrap
+    margin-right: var(--gutter-compensation, -0.5rem)
+    margin-left: var(--gutter-compensation, -0.5rem)
+
+.row *
+    padding: $padding-size
+    text-align: center
+
+@for $i from 1 through 12
+  .#{col-md}-#{$i}, .#{col-xs}-#{$i}
+      box-sizing: border-box
+      border: 2px solid white
+      font-size: 12px
+      background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min))
+
+
+@media screen and (max-width: $md-screen), screen and (max-width: $container)
+    .container
+        display: inline
+
+.navbar
+    width: 100%
+    border-bottom: 1px solid $grey
+    padding: $padding-size
+
+.col-md, .col-xs
+    flex-grow: 1
+    flex-basis: 0
+    max-width: 100%
+
+@for $i from 1 through 12
+    .#{col-md}-#{$i}, .#{col-xs}-#{$i}
+        box-sizing: border-box
+        flex: 0 0 auto
+        padding-right: var(--half-gutter-width, 0.5rem)
+        padding-left: var(--half-gutter-width, 0.5rem)
+        flex-basis: (($i / 12) * 100) + %
+        max-width: (($i / 12) * 100) + %
+
+    @media screen and (max-width: $container)
+        .#{col-md}-#{$i}
+            flex-basis: 100%
+            max-width: none
+
+.input-box
+    padding: 10px 10px
+    border: 0px
+    display: inline-block
+    background-color: $light-grey
+    border-radius: 200px
+
+
+.input-box>input:hover
+    cursor: pointer
+    border-bottom: 1px solid $grey
+
+.input-box>span
+    padding: 5px
+
+.input-box>input
+    border: 0px
+    margin-right: 10px
+    width: 40px
+    border-bottom: 1px solid $light-grey
+    background-color: $light-grey
+
+.input-box>input:focus, .input-box>input:active
+    outline: none
+    width: auto
+    border-bottom: 1px solid $grey
+
+.toggle[type=checkbox]:checked ~ .input-box
+    display: inline-block
+
+.nav
+    list-style: none
+    margin: 0
+    padding: 0
+
+.nav>li
+    display: inline-block
+    padding: 10px 15px
+    margin: 5px 15px
+    border-radius: 5px
+
+.nav>li.CTA
+    background-color: $green-dark
+    font-weight: 500
+    color: $green-text
+
+.nav>li.CTA:hover
+    background-color: $green-light
+
+
+
+.menu-toggle
+    display: none
+    padding: 10px 15px
+    margin: 5px 10px
+    font-size: 18px
+    border-radius: 5px
+
+
+@media screen and (max-width: $sm-screen)
+    .brand
+        display: none
+
+@media screen and (max-width: $md-screen)
+    .collapse
+        display: none
+    .menu-toggle
+        display: inline-block
+    .menu-toggle:hover
+        cursor: pointer
+        background-color: $light-grey
+
+.nav>li:hover
+    background-color: $grey
+    cursor: pointer
+
+.clear
+    background-color: white
+
+.align-left
+    float: left
+
+.align-right
+    float: right
+
+.brand
+    font-size: 18px
+    padding: 10px
+
+
+.center
+    text-align: center
+
+.btn
+    padding: 10px 15px
+    margin: 5px
+    font-size: 14px
+    border: 1px solid $grey
+    border-radius: 5px
+    background-color: $grey
+
+.btn:hover
+    cursor: pointer
+
+.btn-lg
+    padding: 10px 15px
+    font-size: 18px
+
+.btn-md
+    padding: 10px 15px
+    font-size: 14px
+
+.btn-sm
+    padding: 8px 13px
+    font-size: 12px
