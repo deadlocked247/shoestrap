@@ -133,15 +133,65 @@ body
 .nav>li.CTA:hover
     background-color: $green-light
 
+.hidden
+    position: absolute
+    left: -999em
 
+.hidden[type=checkbox]:checked ~ div>.collapse
+    display: block
+    position: absolute
+    background: white
+    z-index: 1
+    height: 100%
+    width: calc(100% - 40px)
+    left: 0
+    top: 80px
+    padding: 20px
+
+.hidden[type=checkbox]:checked ~ div>.collapse>li
+    display: block
+
+.menu-toggle:before
+    content: '\e116'
+    font-family: 'typicons'
+    font-style: normal
+    font-weight: normal
+    speak: none
+    display: inline-block
+    text-decoration: inherit
+    width: 1em
+    height: 1em
+    font-size: 1em
+    text-align: center
+    -webkit-font-smoothing: antialiased
+    font-smoothing: antialiased
+    text-rendering: optimizeLegibility
 
 .menu-toggle
     display: none
+    position: absolute
     padding: 10px 15px
     margin: 5px 10px
     font-size: 18px
     border-radius: 5px
 
+.hidden[type=checkbox]:checked + .menu-toggle:before
+    content: '\e122'
+
+@media screen and (min-width: $md-screen)
+    .hidden[type=checkbox]:checked ~ div>.collapse
+        display: block
+        position: static
+        background: inherit
+        z-index: 1
+        height: auto
+        width: auto
+        padding: 0px
+    .hidden
+        display: none
+
+    .hidden[type=checkbox]:checked ~ div>.collapse>li
+        display: inline-block
 
 @media screen and (max-width: $sm-screen)
     .brand
@@ -152,7 +202,7 @@ body
         display: none
     .menu-toggle
         display: inline-block
-    .menu-toggle:hover
+    .menu-toggle:hover, .menu-close:hover
         cursor: pointer
         background-color: $light-grey
 
