@@ -5,6 +5,7 @@ $green-light: #EFFAB4;
 $green-text: #7D9C54;
 $orange-light: #FFC48C;
 $orange-dark: #FF9F80;
+$orange-text: #AF5A3F;
 $pink: #F56991;
 $grey: #EEE;
 $light-grey: #F5F5F5;
@@ -40,6 +41,7 @@ body
     display: flex
     flex: 0 1 auto
     flex-direction: row
+    justify-content: center
     flex-wrap: wrap
     margin-right: var(--gutter-compensation, -0.5rem)
     margin-left: var(--gutter-compensation, -0.5rem)
@@ -49,7 +51,7 @@ body
     text-align: center
 
 @for $i from 1 through 12
-  .#{col-md}-#{$i}, .#{col-xs}-#{$i}
+  .#{col-md}-#{$i}, .#{col-xs}-#{$i}, .#{col-sm}-#{$i}
       box-sizing: border-box
       border: 2px solid white
       font-size: 12px
@@ -58,7 +60,7 @@ body
 
 @media screen and (max-width: $md-screen), screen and (max-width: $container)
     .container
-        display: inline
+        width: 100%
 
 .navbar
     width: 100%
@@ -70,19 +72,68 @@ body
     flex-basis: 0
     max-width: 100%
 
+.hero
+    display: block
+
+.hero-full
+    width: 100%
+    background-position: center bottom
+    height: 700px
+    background-repeat: no-repeat
+    background-size: cover
+
+.bg-pic
+    background-image: url("hero.jpeg")
+
+.brand>img
+    height: 25px
+    width: 25px
+    display: inline-block
+
+.brand>span
+    margin: 0
+    display: inline-block
+    vertical-align: top
+    padding: 3px 5px
+
+
 @for $i from 1 through 12
-    .#{col-md}-#{$i}, .#{col-xs}-#{$i}
+    .#{col-md}-#{$i}, .#{col-xs}-#{$i}, .#{col-sm}-#{$i}
         box-sizing: border-box
         flex: 0 0 auto
+        border: 0px
         padding-right: var(--half-gutter-width, 0.5rem)
         padding-left: var(--half-gutter-width, 0.5rem)
         flex-basis: (($i / 12) * 100) + %
         max-width: (($i / 12) * 100) + %
 
+
+@for $i from 1 through 1
     @media screen and (max-width: $container)
         .#{col-md}-#{$i}
             flex-basis: 100%
             max-width: none
+
+@for $i from 2 through 3
+    @media screen and (max-width: $md-screen)
+        .#{col-md}-#{$i}
+            flex-basis: 100%
+            max-width: none
+@for $i from 4 through 12
+    @media screen and (max-width: $sm-screen)
+        .#{col-md}-#{$i}
+            flex-basis: 100%
+            max-width: none
+
+@for $i from 1 through 12
+    @media screen and (max-width: $sm-screen)
+        .#{col-sm}-#{$i}
+            flex-basis: 100%
+            max-width: none
+
+
+
+
 
 .input-box
     padding: 10px 10px
@@ -119,11 +170,56 @@ body
     margin: 0
     padding: 0
 
-.nav>li
+.nav>li, .nav>ul
     display: inline-block
     padding: 10px 15px
     margin: 5px 15px
+    list-style: none
     border-radius: 5px
+
+.align-center
+    text-align: center
+
+.hero-CTA
+    background-color: $orange-dark
+    font-weight: 500
+    color: $orange-text
+    border-radius: 5px
+    display: inline
+    padding: 10px 30px
+    font-size: 14px
+    margin: 20px auto
+    text-align: center
+
+.hero-CTA:hover
+    cursor: pointer
+    padding-right: 40px
+    background-color: $orange-light
+
+.hero-CTA:after
+    font-family: 'typicons'
+    font-style: normal
+    content: '\e01a'
+    font-weight: normal
+    speak: none
+    display: inline-block
+    text-decoration: inherit
+    width: 1em
+    height: 1em
+    font-size: 1em
+    text-align: center
+    margin-left: -15px
+    margin-top: 3px
+    opacity: 0
+    transition:  all .25s ease
+    -webkit-font-smoothing: antialiased
+    font-smoothing: antialiased
+    text-rendering: optimizeLegibility
+    position: absolute
+
+.hero-CTA:hover:after
+    opacity: 1
+    margin-left: 5px
 
 .nav>li.CTA
     background-color: $green-dark
@@ -132,6 +228,22 @@ body
 
 .nav>li.CTA:hover
     background-color: $green-light
+
+.hero-title
+    color: white
+    font-size: 3em
+    text-align: center
+    text-transform: uppercase
+    padding-top: 240px
+    padding-bottom: 20px
+    font-family: "Roboto Condensed", Helvetica, sans-serif
+
+.hero-sub
+    color: white
+    font-size: 2em
+    text-align: center
+    padding-top: 20px
+    padding-bottom: 60px
 
 .hidden
     position: absolute
@@ -145,7 +257,7 @@ body
     height: 100%
     width: calc(100% - 40px)
     left: 0
-    top: 80px
+    top: 77px
     padding: 20px
 
 .hidden[type=checkbox]:checked ~ div>.collapse>li
@@ -193,9 +305,28 @@ body
     .hidden[type=checkbox]:checked ~ div>.collapse>li
         display: inline-block
 
-@media screen and (max-width: $sm-screen)
+@media screen and (max-width: $container)
     .brand
         display: none
+
+.nav>li>ul
+    display: none
+
+.nav>li:hover
+    background-color: $grey
+    cursor: pointer
+
+.nav>li:hover>ul
+    display: block
+    position: absolute
+    list-style: none
+    padding: 0
+    margin: 0
+    margin-top: 0
+    border-top: 5px solid $grey
+    margin-left: -15px
+    border-radius: 5px
+    border-bottom: 5px solid $grey
 
 @media screen and (max-width: $md-screen)
     .collapse
@@ -205,8 +336,29 @@ body
     .menu-toggle:hover, .menu-close:hover
         cursor: pointer
         background-color: $light-grey
+    .nav>li:hover>ul
+        width: 100%
+        position: static
+        margin-right: 0px
+        margin-left: -15px
+        margin-top: 0px
+        margin-bottom: 0px
+        border-top: 15px solid #EEEEEE
+        border-bottom: 0px solid #EEEEEE
+    .nav>li:hover>ul>li
+        width: 100%;
 
-.nav>li:hover
+
+
+.nav>li>ul>li
+    background: $grey
+    padding: 15px
+    margin: 0
+
+.nav>li>ul>li:hover
+    background-color: $light-grey
+
+.nav>ul:hover
     background-color: $grey
     cursor: pointer
 
@@ -249,3 +401,7 @@ body
 .btn-sm
     padding: 8px 13px
     font-size: 12px
+
+@media screen and (max-width: $sm-screen)
+    .hero-title
+        padding-top: 140px
